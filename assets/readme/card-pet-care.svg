@@ -1,73 +1,98 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="460" height="220" viewBox="0 0 460 220" role="img" aria-labelledby="title desc">
-  <title id="title">Pet Care Feature</title>
-  <desc id="desc">Módulo de cuidado de mascota: salud, saciedad, energía y reacciones en tiempo real.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="220" viewBox="0 0 460 220" role="img" aria-labelledby="petTitle petDesc">
+  <title id="petTitle">Pet Care &amp; Vitals</title>
+  <desc id="petDesc">Módulo de cuidado de mascota con monitoreo de biometría en tiempo real: salud, saciedad y energía.</desc>
   <defs>
     <linearGradient id="cardBg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0a151d"/>
-      <stop offset="100%" stop-color="#141829"/>
+      <stop offset="0%" stop-color="#0a141c"/>
+      <stop offset="60%" stop-color="#141828"/>
+      <stop offset="100%" stop-color="#1e1022"/>
     </linearGradient>
-    <linearGradient id="borderGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#ff5f7e"/>
+
+    <linearGradient id="neonPinkMint" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff3366"/>
+      <stop offset="50%" stop-color="#a855f7"/>
       <stop offset="100%" stop-color="#00f5a0"/>
     </linearGradient>
-    <filter id="cardGlow" x="-20%" y="-20%" width="140%" height="140%">
+
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur stdDeviation="3" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+
     <style>
-      @keyframes heartPulse {
+      @keyframes ecgPulse {
+        to { stroke-dashoffset: -240; }
+      }
+      @keyframes heartBeat {
         0%, 100% { transform: scale(1); }
-        25% { transform: scale(1.15); }
-        45% { transform: scale(1.05); }
-        65% { transform: scale(1.2); }
+        15% { transform: scale(1.22); filter: drop-shadow(0 0 8px #ff3366); }
+        30% { transform: scale(1.05); }
+        45% { transform: scale(1.28); filter: drop-shadow(0 0 12px #ff3366); }
       }
-      @keyframes statBar {
-        0%, 100% { width: 140px; }
-        50% { width: 155px; }
+      @keyframes barFlow {
+        0%, 100% { width: 145px; }
+        50% { width: 165px; }
       }
-      .anim-heart { transform-origin: 52px 48px; animation: heartPulse 1.8s ease-in-out infinite; }
-      .anim-bar-pulse { animation: statBar 3s ease-in-out infinite; }
+      @keyframes sparkle {
+        0%, 100% { opacity: 0.3; transform: scale(0.8); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+
+      .anim-heart { transform-origin: 52px 48px; animation: heartBeat 1.6s ease-in-out infinite; }
+      .anim-ecg { stroke-dasharray: 20 60; animation: ecgPulse 2.8s linear infinite; }
+      .anim-bar { animation: barFlow 3s ease-in-out infinite; }
+      .anim-sparkle { transform-origin: center; animation: sparkle 2s ease-in-out infinite; }
     </style>
   </defs>
 
   <!-- Card Body -->
   <rect width="460" height="220" rx="22" fill="url(#cardBg)"/>
-  <rect x="1" y="1" width="458" height="218" rx="21" fill="none" stroke="url(#borderGrad)" stroke-width="1.8"/>
+  <rect x="1" y="1" width="458" height="218" rx="21" fill="none" stroke="url(#neonPinkMint)" stroke-width="2"/>
 
-  <!-- Module Badge & Heart Icon -->
+  <!-- Module Badge & Interactive Beating Heart -->
   <g class="anim-heart">
-    <circle cx="52" cy="48" r="24" fill="#2d131f" stroke="#ff5f7e" stroke-width="2" filter="url(#cardGlow)"/>
-    <path d="M52 54 L44 46 C40 41 45 36 49 39 C51 40 52 42 52 42 C52 42 53 40 55 39 C59 36 64 41 60 46 Z" fill="#ff5f7e"/>
+    <circle cx="52" cy="48" r="24" fill="#2d1220" stroke="#ff3366" stroke-width="2" filter="url(#neonGlow)"/>
+    <path d="M52 56 L43 47 C38 42 43 36 48 39 C50 41 52 43 52 43 C52 43 54 41 56 39 C61 36 66 42 61 47 Z" fill="#ff3366"/>
   </g>
 
+  <!-- Module Title & Status -->
   <g transform="translate(94, 38)">
-    <rect x="0" y="-3" width="96" height="20" rx="6" fill="#2d131f" stroke="#ff5f7e" stroke-width="1" opacity="0.8"/>
-    <text x="8" y="11" fill="#ff8ca3" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">MODULE.PET</text>
-    <text x="0" y="36" fill="#f4fff7" font-family="Inter, sans-serif" font-size="22" font-weight="800">Pet Care &amp; Vitals</text>
+    <rect x="0" y="-3" width="96" height="20" rx="6" fill="#2d1220" stroke="#ff3366" stroke-width="1" opacity="0.85"/>
+    <text x="8" y="11" fill="#ff7da7" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">MODULE.PET</text>
+    <text x="0" y="36" fill="#f8fbff" font-family="Inter, sans-serif" font-size="22" font-weight="800">Pet Care &amp; Vitals</text>
   </g>
 
-  <!-- Subtitle and bullets -->
-  <g transform="translate(34, 112)">
+  <!-- Live Electrocardiogram (ECG) Wave Graphic -->
+  <g transform="translate(260, 24)" opacity="0.85">
+    <path d="M 0 25 H 40 L 46 10 L 52 38 L 58 18 L 64 28 L 70 25 H 160" fill="none" stroke="#253545" stroke-width="1.8" stroke-linecap="round"/>
+    <path class="anim-ecg" d="M 0 25 H 40 L 46 10 L 52 38 L 58 18 L 64 28 L 70 25 H 160" fill="none" stroke="#00f5a0" stroke-width="2.2" stroke-linecap="round" filter="url(#neonGlow)"/>
+  </g>
+
+  <!-- Bullets and Metrics -->
+  <g transform="translate(34, 114)">
     <!-- Bullet 1 -->
-    <circle cx="6" cy="6" r="3" fill="#00f5a0"/>
-    <text x="18" y="10" fill="#effff5" font-family="Inter, sans-serif" font-size="14" font-weight="600">Salud, saciedad, energía y multiplicador XP</text>
+    <circle cx="6" cy="6" r="3.5" fill="#00f5a0"/>
+    <text x="18" y="10" fill="#f0fff7" font-family="Inter, sans-serif" font-size="14" font-weight="600">Salud, saciedad, energía y multiplicador XP</text>
 
     <!-- Bullet 2 -->
-    <circle cx="6" cy="32" r="3" fill="#ff5f7e"/>
-    <text x="18" y="36" fill="#d2e0d8" font-family="Inter, sans-serif" font-size="14">Estados de ánimo, caricias y reactivación</text>
+    <circle cx="6" cy="32" r="3.5" fill="#ff3366"/>
+    <text x="18" y="36" fill="#d2e0d8" font-family="Inter, sans-serif" font-size="14">Estados de ánimo reactivos, caricias y sueño</text>
 
-    <!-- Animated Mini Vitals Bar -->
+    <!-- Biometric Status Gauge -->
     <g transform="translate(18, 54)">
-      <!-- Health Bar -->
-      <rect width="180" height="8" rx="4" fill="#1b2a22"/>
-      <rect class="anim-bar-pulse" width="145" height="8" rx="4" fill="#00f5a0"/>
-      <text x="195" y="8" fill="#00f5a0" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700">92% HP</text>
+      <rect width="180" height="8" rx="4" fill="#13231a"/>
+      <rect class="anim-bar" width="150" height="8" rx="4" fill="#00f5a0" filter="url(#neonGlow)"/>
+      <text x="195" y="8" fill="#00f5a0" font-family="JetBrains Mono, monospace" font-size="10" font-weight="800">96% HEALTHY</text>
     </g>
 
-    <!-- Footer tagline -->
-    <text x="0" y="86" fill="#7fa091" font-family="JetBrains Mono, monospace" font-size="12">Codey reacciona en vivo a cada sesión.</text>
+    <!-- Interactive Status Badge -->
+    <g transform="translate(305, 48)">
+      <rect width="90" height="20" rx="10" fill="#1b2e24" stroke="#00f5a0" stroke-width="1"/>
+      <circle cx="10" cy="10" r="3" fill="#00f5a0" class="anim-sparkle"/>
+      <text x="20" y="14" fill="#00f5a0" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700">HAPPY CODEY</text>
+    </g>
   </g>
 </svg>

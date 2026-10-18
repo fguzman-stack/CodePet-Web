@@ -53,16 +53,16 @@
         0%, 100% { transform: translateY(0px); }
         50% { transform: translateY(-8px); }
       }
-      @keyframes starTwinkle {
-        0%, 100% { opacity: 0.3; transform: scale(0.8); }
-        50% { opacity: 1; transform: scale(1.2); }
+      @keyframes floatHeart {
+        0%, 100% { transform: translateY(0) scale(0.9); opacity: 0.6; }
+        50% { transform: translateY(-14px) scale(1.15); opacity: 1; }
       }
-
       .anim-wave { transform-origin: 0 0; animation: pawWave 2.5s ease-in-out infinite; }
       .anim-head { transform-origin: 200px 180px; animation: headTilt 4s ease-in-out infinite; }
       .anim-blink { transform-origin: 200px 145px; animation: blinkEyes 4.5s infinite; }
       .anim-badge-float { animation: floatBadge 3.5s ease-in-out infinite; }
       .anim-star { animation: starTwinkle 2s ease-in-out infinite; }
+      .anim-heart-float { animation: floatHeart 2.8s ease-in-out infinite; }
     </style>
   </defs>
 
@@ -179,6 +179,13 @@
           <circle cx="0" cy="-8" r="2.8" fill="#ff8da1"/>
           <circle cx="7" cy="-5" r="2.8" fill="#ff8da1"/>
         </g>
+      </g>
+    </g>
+
+    <!-- Floating Kawaii Heart beside waving paw -->
+    <g transform="translate(325, 120)">
+      <g class="anim-heart-float">
+        <path d="M 0 5 L -8 -3 C -13 -8 -8 -15 -2 -11 C 0 -9 0 -9 0 -9 C 0 -9 0 -9 2 -11 C 8 -15 13 -8 8 -3 Z" fill="#ff007a" filter="url(#softGlow)"/>
       </g>
     </g>
   </g>

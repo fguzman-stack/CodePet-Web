@@ -1,15 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="50" viewBox="0 0 1200 50" role="img" aria-label="Divisor de circuito interactivo">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="56" viewBox="0 0 1200 56" role="img" aria-label="Divisor cibernético animado">
   <defs>
-    <linearGradient id="divGrad" x1="0" y1="0" x2="1" y2="0">
+    <!-- Multi-stage Neon Gradients -->
+    <linearGradient id="divCyanMint" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#00f5a0" stop-opacity="0"/>
-      <stop offset="25%" stop-color="#00f5a0" stop-opacity="0.8"/>
-      <stop offset="50%" stop-color="#7b2cbf" stop-opacity="1"/>
-      <stop offset="75%" stop-color="#00d2ff" stop-opacity="0.8"/>
+      <stop offset="15%" stop-color="#00f5a0" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#00d2ff" stop-opacity="1"/>
+      <stop offset="85%" stop-color="#a855f7" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="divMagentaViolet" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ff007a" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#ff007a" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#7928ca" stop-opacity="1"/>
+      <stop offset="80%" stop-color="#00d2ff" stop-opacity="0.8"/>
       <stop offset="100%" stop-color="#00d2ff" stop-opacity="0"/>
     </linearGradient>
 
-    <filter id="divGlow" x="-20%" y="-50%" width="140%" height="200%">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
+    <filter id="neonBlur" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -17,62 +26,102 @@
     </filter>
 
     <style>
-      @keyframes pulseBeamLeft {
-        0% { stroke-dashoffset: 600; }
+      @keyframes travelRight {
+        0% { stroke-dashoffset: 400; }
         100% { stroke-dashoffset: 0; }
       }
-      @keyframes pulseBeamRight {
-        0% { stroke-dashoffset: -600; }
+      @keyframes travelLeft {
+        0% { stroke-dashoffset: -400; }
         100% { stroke-dashoffset: 0; }
       }
-      @keyframes nodeBlink {
-        0%, 100% { transform: scale(1); opacity: 0.6; }
-        50% { transform: scale(1.4); opacity: 1; }
+      @keyframes nodePing {
+        0% { r: 2px; opacity: 1; }
+        100% { r: 9px; opacity: 0; }
       }
-      @keyframes centerSpin {
-        0%, 100% { transform: rotate(0deg); }
-        50% { transform: rotate(180deg); }
+      @keyframes coreRotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes coreCounterRotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(-360deg); }
+      }
+      @keyframes diamondPulse {
+        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px #00f5a0); }
+        50% { transform: scale(1.1); filter: drop-shadow(0 0 10px #00d2ff); }
       }
 
-      .wire-left { stroke-dasharray: 40 80; animation: pulseBeamLeft 4s linear infinite; }
-      .wire-right { stroke-dasharray: 40 80; animation: pulseBeamRight 4s linear infinite; }
-      .node-pulse { transform-origin: center; animation: nodeBlink 2s ease-in-out infinite; }
-      .node-pulse-delay { transform-origin: center; animation: nodeBlink 2s ease-in-out infinite 1s; }
+      .pulse-fast-r { stroke-dasharray: 50 120; animation: travelRight 3.2s linear infinite; }
+      .pulse-slow-l { stroke-dasharray: 40 100; animation: travelLeft 4.5s linear infinite; }
+      .ping-ring { transform-origin: center; animation: nodePing 2s cubic-bezier(0, 0.2, 0.8, 1) infinite; }
+      .ping-ring-delay { transform-origin: center; animation: nodePing 2s cubic-bezier(0, 0.2, 0.8, 1) infinite 1s; }
+      .rot-ring { transform-origin: 600px 28px; animation: coreRotate 14s linear infinite; }
+      .rot-inner { transform-origin: 600px 28px; animation: coreCounterRotate 10s linear infinite; }
+      .center-diamond { transform-origin: 600px 28px; animation: diamondPulse 2.8s ease-in-out infinite; }
     </style>
   </defs>
 
-  <!-- Base Inactive Circuit Lines -->
-  <g fill="none" stroke="#1f3344" stroke-width="2" opacity="0.4" stroke-linecap="round">
-    <path d="M 0 25 H 480 L 515 12 H 560"/>
-    <path d="M 1200 25 H 720 L 685 12 H 640"/>
-    <path d="M 150 25 L 175 38 H 340 L 360 25"/>
-    <path d="M 1050 25 L 1025 38 H 860 L 840 25"/>
+  <!-- Background Base Wiring (Dim Grid / Circuit Tracks) -->
+  <g fill="none" stroke="#162736" stroke-width="1.8" opacity="0.45" stroke-linecap="round">
+    <!-- Main Centerline -->
+    <path d="M 0 28 H 470 L 510 14 H 565"/>
+    <path d="M 1200 28 H 730 L 690 14 H 635"/>
+    <!-- Lower Traces -->
+    <path d="M 120 28 L 150 42 H 350 L 375 28"/>
+    <path d="M 1080 28 L 1050 42 H 850 L 825 28"/>
+    <!-- Upper Accents -->
+    <path d="M 280 28 L 305 16 H 420"/>
+    <path d="M 920 28 L 895 16 H 780"/>
   </g>
 
-  <!-- Animated Glowing Energy Pulses -->
-  <g fill="none" stroke="url(#divGrad)" stroke-width="2.5" stroke-linecap="round" filter="url(#divGlow)">
-    <path class="wire-left" d="M 0 25 H 480 L 515 12 H 560"/>
-    <path class="wire-right" d="M 1200 25 H 720 L 685 12 H 640"/>
-    <path class="wire-left" d="M 150 25 L 175 38 H 340 L 360 25"/>
-    <path class="wire-right" d="M 1050 25 L 1025 38 H 860 L 840 25"/>
+  <!-- Animated Glowing Energy Rays (Bidirectional Flow) -->
+  <g fill="none" stroke="url(#divCyanMint)" stroke-width="2.5" stroke-linecap="round" filter="url(#neonBlur)">
+    <path class="pulse-fast-r" d="M 0 28 H 470 L 510 14 H 565"/>
+    <path class="pulse-slow-l" d="M 1200 28 H 730 L 690 14 H 635"/>
+    <path class="pulse-fast-r" d="M 120 28 L 150 42 H 350 L 375 28"/>
   </g>
 
-  <!-- Circuit Junction Nodes -->
-  <g filter="url(#divGlow)">
-    <circle class="node-pulse" cx="480" cy="25" r="3.5" fill="#00f5a0"/>
-    <circle class="node-pulse-delay" cx="560" cy="12" r="3.5" fill="#7b2cbf"/>
-    <circle class="node-pulse" cx="640" cy="12" r="3.5" fill="#7b2cbf"/>
-    <circle class="node-pulse-delay" cx="720" cy="25" r="3.5" fill="#00d2ff"/>
-    <circle cx="175" cy="38" r="2.5" fill="#00f5a0"/>
-    <circle cx="1025" cy="38" r="2.5" fill="#00d2ff"/>
+  <g fill="none" stroke="url(#divMagentaViolet)" stroke-width="2.2" stroke-linecap="round" filter="url(#neonBlur)">
+    <path class="pulse-slow-l" d="M 1080 28 L 1050 42 H 850 L 825 28"/>
+    <path class="pulse-fast-r" d="M 280 28 L 305 16 H 420"/>
+    <path class="pulse-slow-l" d="M 920 28 L 895 16 H 780"/>
   </g>
 
-  <!-- Central Cyber Badge / Diamond -->
-  <g transform="translate(600, 25)" filter="url(#divGlow)">
-    <!-- Hexagonal Core -->
-    <polygon points="0,-18 20,-8 20,8 0,18 -20,8 -20,-8" fill="#0c1722" stroke="#00f5a0" stroke-width="2"/>
-    <polygon points="0,-10 11,-4 11,4 0,10 -11,4 -11,-4" fill="#7b2cbf" opacity="0.7"/>
-    <!-- Terminal Code Glyph </> inside Center -->
-    <path d="M -6 -4 L -10 0 L -6 4 M 6 -4 L 10 0 L 6 4 M 2 -6 L -2 6" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Radar Ping Ripple Rings at Key Nodes -->
+  <g fill="none" stroke-width="1.2">
+    <circle class="ping-ring" cx="470" cy="28" r="3" stroke="#00f5a0"/>
+    <circle class="ping-ring-delay" cx="730" cy="28" r="3" stroke="#00d2ff"/>
+    <circle class="ping-ring" cx="350" cy="42" r="3" stroke="#a855f7"/>
+    <circle class="ping-ring-delay" cx="850" cy="42" r="3" stroke="#ff007a"/>
+  </g>
+
+  <!-- Fixed Circuit Micro-Nodes with Glow -->
+  <g filter="url(#neonBlur)">
+    <circle cx="470" cy="28" r="3.2" fill="#00f5a0"/>
+    <circle cx="510" cy="14" r="2.8" fill="#00d2ff"/>
+    <circle cx="565" cy="14" r="3" fill="#a855f7"/>
+    <circle cx="730" cy="28" r="3.2" fill="#00d2ff"/>
+    <circle cx="690" cy="14" r="2.8" fill="#a855f7"/>
+    <circle cx="635" cy="14" r="3" fill="#00f5a0"/>
+    <circle cx="150" cy="42" r="2.4" fill="#00f5a0"/>
+    <circle cx="350" cy="42" r="2.8" fill="#00d2ff"/>
+    <circle cx="1050" cy="42" r="2.4" fill="#ff007a"/>
+    <circle cx="850" cy="42" r="2.8" fill="#a855f7"/>
+  </g>
+
+  <!-- Central Quantum Reactor Core -->
+  <!-- Rotating Outer Dashed Orbit Ring -->
+  <circle class="rot-ring" cx="600" cy="28" r="22" fill="none" stroke="#00f5a0" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.5"/>
+  <!-- Counter-Rotating Inner Tech Octagon -->
+  <g class="rot-inner">
+    <polygon points="600,12 611,17 616,28 611,39 600,44 589,39 584,28 589,17" fill="none" stroke="#00d2ff" stroke-width="1.2" opacity="0.6"/>
+  </g>
+
+  <!-- Central Glowing Hexagon & Emblem -->
+  <g class="center-diamond">
+    <polygon points="600,10 618,19 618,37 600,46 582,37 582,19" fill="#0a141e" stroke="#00f5a0" stroke-width="2" filter="url(#neonBlur)"/>
+    <polygon points="600,16 611,22 611,34 600,40 589,34 589,22" fill="#7928ca" opacity="0.7"/>
+    <!-- Terminal Code Glyph </> -->
+    <path d="M 594 24 L 590 28 L 594 32 M 606 24 L 610 28 L 606 32 M 602 22 L 598 34" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
   </g>
 </svg>

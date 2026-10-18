@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="280" height="64" viewBox="0 0 280 64" role="img" aria-labelledby="title desc">
-  <title id="title">Descargar APK</title>
-  <desc id="desc">Botón animado estilo terminal cyberpunk para descargar la APK de Android.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="64" viewBox="0 0 280 64" role="img" aria-labelledby="ctaTitle ctaDesc">
+  <title id="ctaTitle">CodePet Android App</title>
+  <desc id="ctaDesc">Insignia animada de la app Android nativa de CodePet con arquitectura local-first.</desc>
   <defs>
     <linearGradient id="btnBg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#091b15"/>
-      <stop offset="100%" stop-color="#142c22"/>
+      <stop offset="0%" stop-color="#0a1d17"/>
+      <stop offset="100%" stop-color="#142c23"/>
     </linearGradient>
     <linearGradient id="neonMint" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#00f5a0"/>
@@ -18,11 +18,11 @@
       </feMerge>
     </filter>
     <style>
-      @keyframes bounceArrow {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(3px); }
+      @keyframes pulseDroid {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.12); }
       }
-      .anim-arrow { animation: bounceArrow 1.5s ease-in-out infinite; }
+      .anim-droid { transform-origin: 32px 32px; animation: pulseDroid 2s ease-in-out infinite; }
     </style>
   </defs>
 
@@ -30,17 +30,19 @@
   <rect x="2" y="2" width="276" height="60" rx="18" fill="url(#btnBg)"/>
   <rect x="2" y="2" width="276" height="60" rx="18" fill="none" stroke="url(#neonMint)" stroke-width="2" filter="url(#btnGlow)"/>
 
-  <!-- Left Icon Circle with animated down arrow -->
-  <g transform="translate(32, 32)">
-    <circle cx="0" cy="0" r="18" fill="#173d2f" stroke="#00f5a0" stroke-width="1.8"/>
-    <g class="anim-arrow">
-      <path d="M0 -7 V7 M-5 2 L0 7 L5 2" fill="none" stroke="#00f5a0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
+  <!-- Left Icon Circle with animated Android / Star Emblem -->
+  <g class="anim-droid">
+    <circle cx="32" cy="32" r="18" fill="#153e2e" stroke="#00f5a0" stroke-width="1.8"/>
+    <path d="M24 35 A8 8 0 0 1 40 35 Z" fill="#00f5a0"/>
+    <line x1="26" y1="28" x2="23" y2="24" stroke="#00f5a0" stroke-width="1.8" stroke-linecap="round"/>
+    <line x1="38" y1="28" x2="41" y2="24" stroke="#00f5a0" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="28" cy="31" r="1.2" fill="#0a1d17"/>
+    <circle cx="36" cy="31" r="1.2" fill="#0a1d17"/>
   </g>
 
   <!-- Text -->
   <g transform="translate(64, 28)">
-    <text x="0" y="0" fill="#f4fff7" font-family="Inter, sans-serif" font-size="15" font-weight="800">Descargar APK</text>
-    <text x="0" y="18" fill="#88e0a8" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600">Android 7.0+ · v3.2.0</text>
+    <text x="0" y="0" fill="#f4fff7" font-family="Inter, sans-serif" font-size="15" font-weight="800">CodePet Android</text>
+    <text x="0" y="18" fill="#88e0a8" font-family="JetBrains Mono, monospace" font-size="10" font-weight="600">Local-First · Android 7.0+</text>
   </g>
 </svg>

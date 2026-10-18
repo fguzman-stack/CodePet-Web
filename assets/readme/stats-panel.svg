@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="180" viewBox="0 0 960 180" role="img" aria-labelledby="title desc">
-  <title id="title">CodePet System Metrics &amp; Stats</title>
-  <desc id="desc">Panel de estadísticas del sistema: versión 3.2.0, compatibilidad Android API 24+, retos y temas disponibles.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="180" viewBox="0 0 960 180" role="img" aria-labelledby="statsTitle statsDesc">
+  <title id="statsTitle">CodePet System Metrics &amp; Stats</title>
+  <desc id="statsDesc">Panel de estadísticas del sistema: versión 3.2.0, compatibilidad Android API 24+, retos y temas disponibles con telemetría en vivo.</desc>
   <defs>
     <linearGradient id="panelBg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#080f16"/>
@@ -11,7 +11,7 @@
     <linearGradient id="edgeGrad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#00f5a0"/>
       <stop offset="35%" stop-color="#00d2ff"/>
-      <stop offset="70%" stop-color="#7b2cbf"/>
+      <stop offset="70%" stop-color="#a855f7"/>
       <stop offset="100%" stop-color="#ffd166"/>
     </linearGradient>
 
@@ -27,12 +27,14 @@
       @keyframes eqBar1 { 0%, 100% { height: 6px; } 50% { height: 18px; } }
       @keyframes eqBar2 { 0%, 100% { height: 16px; } 50% { height: 8px; } }
       @keyframes eqBar3 { 0%, 100% { height: 10px; } 50% { height: 22px; } }
-      @keyframes ledPulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; filter: drop-shadow(0 0 4px #00f5a0); } }
+      @keyframes ledPulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; filter: drop-shadow(0 0 6px #00f5a0); } }
+      @keyframes streamRun { to { stroke-dashoffset: -200; } }
 
       .anim-eq-1 { animation: eqBar1 1.2s ease-in-out infinite; }
       .anim-eq-2 { animation: eqBar2 1.5s ease-in-out infinite; }
       .anim-eq-3 { animation: eqBar3 1.1s ease-in-out infinite; }
       .anim-led { animation: ledPulse 2s infinite; }
+      .anim-stream { stroke-dasharray: 12 24; animation: streamRun 3s linear infinite; }
     </style>
   </defs>
 
@@ -46,12 +48,12 @@
     <text x="14" y="4" fill="#00f5a0" font-family="JetBrains Mono, monospace" font-size="13" font-weight="700">$ ./codey --telemetry --stats --verified</text>
     
     <!-- Equalizer visualization -->
-    <g transform="translate(760, 4)">
+    <g transform="translate(740, 4)">
       <rect class="anim-eq-1" x="0" y="-14" width="4" height="14" rx="2" fill="#00f5a0"/>
       <rect class="anim-eq-2" x="8" y="-14" width="4" height="14" rx="2" fill="#00d2ff"/>
-      <rect class="anim-eq-3" x="16" y="-14" width="4" height="14" rx="2" fill="#7b2cbf"/>
+      <rect class="anim-eq-3" x="16" y="-14" width="4" height="14" rx="2" fill="#a855f7"/>
       <rect class="anim-eq-1" x="24" y="-14" width="4" height="14" rx="2" fill="#ffd166"/>
-      <text x="36" y="0" fill="#6d869c" font-family="JetBrains Mono, monospace" font-size="11">SYSTEM HEALTH: 100%</text>
+      <text x="36" y="0" fill="#7ba3bc" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">HEALTH: 100%</text>
     </g>
   </g>
 
@@ -80,7 +82,7 @@
     <!-- Metric 3: Challenges -->
     <g transform="translate(310, 0)">
       <text y="24" fill="#f8f4ff" font-family="Inter, sans-serif" font-size="32" font-weight="900">123</text>
-      <text y="48" fill="#c499f5" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">RETOS TOTALES</text>
+      <text y="48" fill="#d8b4fe" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">RETOS TOTALES</text>
       <text y="62" fill="#4a6579" font-family="JetBrains Mono, monospace" font-size="9">117 REG + 6 SPEC</text>
     </g>
 
@@ -90,7 +92,7 @@
     <!-- Metric 4: Languages -->
     <g transform="translate(472, 0)">
       <text y="24" fill="#ffd166" font-family="Inter, sans-serif" font-size="32" font-weight="900">13</text>
-      <text y="48" fill="#e0cb8d" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">LENGUAJES</text>
+      <text y="48" fill="#fde68a" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">LENGUAJES</text>
       <text y="62" fill="#4a6579" font-family="JetBrains Mono, monospace" font-size="9">MULTI-SINTAXIS</text>
     </g>
 
@@ -99,8 +101,8 @@
 
     <!-- Metric 5: Themes -->
     <g transform="translate(614, 0)">
-      <text y="24" fill="#ff79c6" font-family="Inter, sans-serif" font-size="32" font-weight="900">12+</text>
-      <text y="48" fill="#e499c7" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">TEMAS VISUALES</text>
+      <text y="24" fill="#f472b6" font-family="Inter, sans-serif" font-size="32" font-weight="900">12+</text>
+      <text y="48" fill="#fbcfe8" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">TEMAS VISUALES</text>
       <text y="62" fill="#4a6579" font-family="JetBrains Mono, monospace" font-size="9">CUSTOMIZACIÓN</text>
     </g>
 
@@ -110,14 +112,14 @@
     <!-- Metric 6: Room Schema -->
     <g transform="translate(762, 0)">
       <text y="24" fill="#50fa7b" font-family="Inter, sans-serif" font-size="32" font-weight="900">Room 7</text>
-      <text y="48" fill="#88e0a0" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">LOCAL SQLITE</text>
+      <text y="48" fill="#86efac" font-family="JetBrains Mono, monospace" font-size="11" font-weight="600">LOCAL SQLITE</text>
       <text y="62" fill="#4a6579" font-family="JetBrains Mono, monospace" font-size="9">DATA MIGRATION OK</text>
     </g>
   </g>
 
-  <!-- Bottom Details Line -->
+  <!-- Bottom Details & Data Stream Line -->
   <g transform="translate(36, 154)">
-    <circle cx="0" cy="0" r="3" fill="#00f5a0"/>
-    <text x="12" y="3" fill="#a4bed0" font-family="JetBrains Mono, monospace" font-size="11">Todos los retos, assets y bases de datos están empaquetados localmente dentro de la APK (0 peticiones a servidores externos).</text>
+    <circle cx="0" cy="0" r="3.5" fill="#00f5a0"/>
+    <text x="12" y="3" fill="#94a3b8" font-family="JetBrains Mono, monospace" font-size="11">Retos, assets y bases de datos empaquetados localmente en Android (0 peticiones a servidores externos).</text>
   </g>
 </svg>
