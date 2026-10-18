@@ -1,11 +1,73 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="420" height="190" viewBox="0 0 420 190" role="img" aria-labelledby="title desc">
-  <title id="title">Pet care feature card</title>
-  <desc id="desc">Feature card for Codey's pet-care loop.</desc>
-  <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#81C784"/><stop offset="1" stop-color="#7C4DFF"/></linearGradient><style>text{font-family:Consolas,Menlo,monospace}</style></defs>
-  <rect width="420" height="190" rx="24" fill="#0D1117"/><rect x="1" y="1" width="418" height="188" rx="23" fill="none" stroke="url(#g)" stroke-width="2"/>
-  <circle cx="52" cy="48" r="24" fill="#14291D" stroke="#81C784"/><text x="43" y="57" fill="#FF6B7A" font-size="26">♥</text>
-  <text x="92" y="41" fill="#81C784" font-size="14">module.pet</text><text x="92" y="65" fill="#F4FFF7" font-size="24" font-weight="700">Pet Care</text>
-  <text x="34" y="106" fill="#C9D1D9" font-size="15">health, satiety, energy, XP</text>
-  <text x="34" y="132" fill="#C9D1D9" font-size="15">moodlets, care actions, revival</text>
-  <text x="34" y="158" fill="#8B949E" font-size="13">Codey reacts to what you study.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="220" viewBox="0 0 460 220" role="img" aria-labelledby="title desc">
+  <title id="title">Pet Care Feature</title>
+  <desc id="desc">Módulo de cuidado de mascota: salud, saciedad, energía y reacciones en tiempo real.</desc>
+  <defs>
+    <linearGradient id="cardBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a151d"/>
+      <stop offset="100%" stop-color="#141829"/>
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff5f7e"/>
+      <stop offset="100%" stop-color="#00f5a0"/>
+    </linearGradient>
+    <filter id="cardGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      @keyframes heartPulse {
+        0%, 100% { transform: scale(1); }
+        25% { transform: scale(1.15); }
+        45% { transform: scale(1.05); }
+        65% { transform: scale(1.2); }
+      }
+      @keyframes statBar {
+        0%, 100% { width: 140px; }
+        50% { width: 155px; }
+      }
+      .anim-heart { transform-origin: 52px 48px; animation: heartPulse 1.8s ease-in-out infinite; }
+      .anim-bar-pulse { animation: statBar 3s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- Card Body -->
+  <rect width="460" height="220" rx="22" fill="url(#cardBg)"/>
+  <rect x="1" y="1" width="458" height="218" rx="21" fill="none" stroke="url(#borderGrad)" stroke-width="1.8"/>
+
+  <!-- Module Badge & Heart Icon -->
+  <g class="anim-heart">
+    <circle cx="52" cy="48" r="24" fill="#2d131f" stroke="#ff5f7e" stroke-width="2" filter="url(#cardGlow)"/>
+    <path d="M52 54 L44 46 C40 41 45 36 49 39 C51 40 52 42 52 42 C52 42 53 40 55 39 C59 36 64 41 60 46 Z" fill="#ff5f7e"/>
+  </g>
+
+  <g transform="translate(94, 38)">
+    <rect x="0" y="-3" width="96" height="20" rx="6" fill="#2d131f" stroke="#ff5f7e" stroke-width="1" opacity="0.8"/>
+    <text x="8" y="11" fill="#ff8ca3" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">MODULE.PET</text>
+    <text x="0" y="36" fill="#f4fff7" font-family="Inter, sans-serif" font-size="22" font-weight="800">Pet Care &amp; Vitals</text>
+  </g>
+
+  <!-- Subtitle and bullets -->
+  <g transform="translate(34, 112)">
+    <!-- Bullet 1 -->
+    <circle cx="6" cy="6" r="3" fill="#00f5a0"/>
+    <text x="18" y="10" fill="#effff5" font-family="Inter, sans-serif" font-size="14" font-weight="600">Salud, saciedad, energía y multiplicador XP</text>
+
+    <!-- Bullet 2 -->
+    <circle cx="6" cy="32" r="3" fill="#ff5f7e"/>
+    <text x="18" y="36" fill="#d2e0d8" font-family="Inter, sans-serif" font-size="14">Estados de ánimo, caricias y reactivación</text>
+
+    <!-- Animated Mini Vitals Bar -->
+    <g transform="translate(18, 54)">
+      <!-- Health Bar -->
+      <rect width="180" height="8" rx="4" fill="#1b2a22"/>
+      <rect class="anim-bar-pulse" width="145" height="8" rx="4" fill="#00f5a0"/>
+      <text x="195" y="8" fill="#00f5a0" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700">92% HP</text>
+    </g>
+
+    <!-- Footer tagline -->
+    <text x="0" y="86" fill="#7fa091" font-family="JetBrains Mono, monospace" font-size="12">Codey reacciona en vivo a cada sesión.</text>
+  </g>
 </svg>

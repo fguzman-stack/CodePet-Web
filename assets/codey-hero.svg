@@ -1,66 +1,395 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="480" viewBox="0 0 1200 480" role="img" aria-labelledby="title desc">
-  <title id="title">Code Tamagotchi</title>
-  <desc id="desc">Codey, the cream and brown programmer cat with blue glasses, at a laptop in a mint and violet terminal universe.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">CodePet Hero: Codey Hackeando en su Laptop</title>
+  <desc id="desc">Codey, el gatito programador con gafas azules, escribiendo código en una terminal futurista con hologramas y circuitos neón.</desc>
   <defs>
-    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0d1720"/><stop offset=".55" stop-color="#14152c"/><stop offset="1" stop-color="#211b36"/></linearGradient>
-    <linearGradient id="edge"><stop stop-color="#81c784"/><stop offset=".5" stop-color="#7c4dff"/><stop offset="1" stop-color="#e5b76c"/></linearGradient>
-    <linearGradient id="word" x2="1" y2=".3"><stop stop-color="#f4fff7"/><stop offset="1" stop-color="#b1eac9"/></linearGradient>
-    <radialGradient id="mint"><stop stop-color="#81c784" stop-opacity=".19"/><stop offset="1" stop-color="#81c784" stop-opacity="0"/></radialGradient>
-    <radialGradient id="violet"><stop stop-color="#906cff" stop-opacity=".27"/><stop offset="1" stop-color="#906cff" stop-opacity="0"/></radialGradient>
-    <radialGradient id="fur" cx=".4" cy=".3" r=".85"><stop stop-color="#fffefa"/><stop offset=".6" stop-color="#fff6ea"/><stop offset="1" stop-color="#f4e3cb"/></radialGradient>
-    <radialGradient id="patch" cx=".35" cy=".3" r=".9"><stop stop-color="#d99a58"/><stop offset=".55" stop-color="#c98a4b"/><stop offset="1" stop-color="#b97a3c"/></radialGradient>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#bdd4ef" stroke-opacity=".045"/></pattern>
-    <clipPath id="frame"><rect x="1" y="1" width="1198" height="478" rx="30"/></clipPath>
-    <path id="spark" d="M0-9 2-2 9 0 2 2 0 9-2 2-9 0-2-2Z"/>
+    <!-- Background Gradients -->
+    <linearGradient id="heroBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070c12"/>
+      <stop offset="40%" stop-color="#0f1426"/>
+      <stop offset="85%" stop-color="#181335"/>
+      <stop offset="100%" stop-color="#0b1a20"/>
+    </linearGradient>
+
+    <linearGradient id="neonCyanMint" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00f5a0"/>
+      <stop offset="50%" stop-color="#00d2ff"/>
+      <stop offset="100%" stop-color="#7b2cbf"/>
+    </linearGradient>
+
+    <radialGradient id="haloMint" cx="20%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#00f5a0" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#00f5a0" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="haloViolet" cx="75%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#7b2cbf" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#3a0ca3" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#7b2cbf" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="screenBeam" cx="50%" cy="100%" r="80%">
+      <stop offset="0%" stop-color="#00f5a0" stop-opacity="0.4"/>
+      <stop offset="60%" stop-color="#00d2ff" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#00f5a0" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="furGrad" cx="40%" cy="30%" r="85%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#fff5eb"/>
+      <stop offset="100%" stop-color="#eed5bd"/>
+    </radialGradient>
+
+    <radialGradient id="patchGrad" cx="35%" cy="30%" r="85%">
+      <stop offset="0%" stop-color="#f6ad62"/>
+      <stop offset="60%" stop-color="#d4802c"/>
+      <stop offset="100%" stop-color="#a85912"/>
+    </radialGradient>
+
+    <!-- Filters -->
+    <filter id="glowSubtle" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Pattern -->
+    <pattern id="matrixGrid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#2a3f5f" stroke-width="1" stroke-opacity="0.18"/>
+      <circle cx="48" cy="48" r="1.5" fill="#00f5a0" fill-opacity="0.25"/>
+    </pattern>
+
+    <!-- Clip -->
+    <clipPath id="heroClip">
+      <rect x="2" y="2" width="1196" height="516" rx="28"/>
+    </clipPath>
+
+    <!-- Animations using pure SVG animateTransform / internal keyframes with proper wrappers -->
+    <style>
+      @keyframes floatSoft {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+      @keyframes floatCardL {
+        0%, 100% { transform: translateY(0px) rotate(-3deg); }
+        50% { transform: translateY(-8px) rotate(-1deg); }
+      }
+      @keyframes floatCardR {
+        0%, 100% { transform: translateY(0px) rotate(4deg); }
+        50% { transform: translateY(-10px) rotate(6deg); }
+      }
+      @keyframes tailSway {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(-14deg); }
+      }
+      @keyframes typingLeft {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+      }
+      @keyframes typingRight {
+        0%, 100% { transform: translateY(-3px); }
+        50% { transform: translateY(1px); }
+      }
+      @keyframes blinkCursor {
+        0%, 49% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+      @keyframes circuitRun {
+        to { stroke-dashoffset: -200; }
+      }
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.25; transform: scale(0.7); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+      @keyframes orbitRotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      .anim-float { animation: floatSoft 5s ease-in-out infinite; }
+      .anim-card-l { animation: floatCardL 6s ease-in-out infinite; }
+      .anim-card-r { animation: floatCardR 5.5s ease-in-out infinite; }
+      .anim-tail { transform-origin: 65px 60px; animation: tailSway 3s ease-in-out infinite; }
+      .anim-paw-l { animation: typingLeft 0.5s ease-in-out infinite; }
+      .anim-paw-r { animation: typingRight 0.5s ease-in-out infinite; }
+      .anim-cursor { animation: blinkCursor 1s step-end infinite; }
+      .anim-pulse-wire { stroke-dasharray: 12 16; animation: circuitRun 4s linear infinite; }
+      .anim-star-1 { transform-origin: 730px 105px; animation: twinkle 3s ease-in-out infinite; }
+      .anim-star-2 { transform-origin: 1080px 150px; animation: twinkle 3.5s ease-in-out infinite 1s; }
+      .anim-star-3 { transform-origin: 640px 280px; animation: twinkle 2.5s ease-in-out infinite 0.5s; }
+      .anim-orbit { animation: orbitRotate 40s linear infinite; }
+    </style>
   </defs>
-  <g clip-path="url(#frame)">
-    <rect width="1200" height="480" fill="url(#bg)"/>
-    <circle cx="190" cy="360" r="320" fill="url(#mint)"/><circle cx="925" cy="205" r="350" fill="url(#violet)"/>
-    <rect width="1200" height="480" fill="url(#grid)"/>
-    <path d="M0 65H1200" stroke="#a9b8ce" stroke-opacity=".12"/>
-    <g transform="translate(34 33)"><circle r="5" fill="#f28ba5"/><circle cx="20" r="5" fill="#ffd166"/><circle cx="40" r="5" fill="#81c784"/></g>
-    <g fill="none" stroke="#81c784" stroke-opacity=".25"><path d="M0 382H70L110 422H284"/><path d="M0 397H64L104 437H225"/><circle cx="284" cy="422" r="4"/><path d="M1070 85H1114L1152 123H1200"/></g>
-    <g font-family="Consolas,Menlo,monospace"><text x="112" y="39" font-size="13" letter-spacing="2" fill="#a4b4c6">./code-tamagotchi</text>
-      <text x="64" y="173" font-size="66" font-weight="800" letter-spacing="-3" fill="url(#word)">Code</text>
-      <text x="60" y="244" font-size="66" font-weight="800" letter-spacing="-4" fill="url(#word)">Tamagotchi</text>
-      <text x="65" y="301" font-size="28" fill="#81c784">&gt;_</text>
+
+  <g clip-path="url(#heroClip)">
+    <!-- Base Background -->
+    <rect width="1200" height="520" fill="url(#heroBg)"/>
+    <rect width="1200" height="520" fill="url(#matrixGrid)"/>
+
+    <!-- Glowing Atmosphere Orbs -->
+    <circle cx="220" cy="380" r="380" fill="url(#haloMint)"/>
+    <circle cx="880" cy="270" r="420" fill="url(#haloViolet)"/>
+
+    <!-- Cyber Circuit Traces running in background -->
+    <g fill="none" stroke="#00f5a0" stroke-width="2" opacity="0.35">
+      <path class="anim-pulse-wire" d="M 0 430 H 120 L 160 470 H 360 L 400 510"/>
+      <circle cx="360" cy="470" r="4" fill="#00f5a0"/>
+      <path class="anim-pulse-wire" d="M 0 120 H 90 L 140 70 H 280"/>
+      <circle cx="280" cy="70" r="3" fill="#00d2ff"/>
+      <path class="anim-pulse-wire" d="M 1020 40 H 1100 L 1150 90 H 1200"/>
     </g>
-    <path d="M121 291H280M121 303H222M306 291H354" stroke="#a38aff" stroke-opacity=".45" stroke-width="3" stroke-linecap="round"/>
-    <rect x="64" y="336" width="66" height="3" rx="1.5" fill="#81c784"/><rect x="139" y="336" width="28" height="3" rx="1.5" fill="#9f86ff"/><rect x="176" y="336" width="14" height="3" rx="1.5" fill="#ffd166"/>
-    <g transform="translate(890 277)">
-      <ellipse cy="103" rx="170" ry="37" fill="#080d18" opacity=".6"/><ellipse cy="103" rx="170" ry="37" fill="none" stroke="#9474ff" stroke-opacity=".35"/>
-      <ellipse rx="210" ry="146" fill="none" stroke="#9285d2" stroke-opacity=".14" transform="rotate(-22)"/>
-      <ellipse rx="185" ry="173" fill="none" stroke="#81c784" stroke-opacity=".12" transform="rotate(22)"/>
+
+    <!-- Top Window Chrome Bar -->
+    <g>
+      <rect x="0" y="0" width="1200" height="48" fill="#080e14" fill-opacity="0.85"/>
+      <line x1="0" y1="48" x2="1200" y2="48" stroke="#1d2d3a" stroke-width="1.5"/>
+      <g transform="translate(28, 24)">
+        <circle cx="0" cy="0" r="6" fill="#ff5f56"/>
+        <circle cx="20" cy="0" r="6" fill="#ffbd2e"/>
+        <circle cx="40" cy="0" r="6" fill="#27c93f"/>
+      </g>
+      <!-- Breadcrumb / Command prompt -->
+      <g font-family="JetBrains Mono, Consolas, monospace" font-size="13" fill="#6c8299">
+        <text x="100" y="29"><tspan fill="#00f5a0">~/code-pet</tspan> <tspan fill="#3a5169">git:(</tspan><tspan fill="#7b2cbf">main</tspan><tspan fill="#3a5169">)</tspan> <tspan fill="#00f5a0">❯</tspan> kotlinc main.kt -include-runtime -d codey.jar &amp;&amp; java -jar codey.jar</text>
+      </g>
+      <g transform="translate(1120, 24)">
+        <rect x="-40" y="-12" width="76" height="24" rx="12" fill="#13232f" stroke="#00f5a0" stroke-width="1"/>
+        <circle cx="-28" cy="0" r="4" fill="#00f5a0"/>
+        <text x="-16" y="4" font-family="JetBrains Mono, monospace" font-size="10" font-weight="700" fill="#00f5a0">ONLINE</text>
+      </g>
     </g>
-    <!-- Front view follows the adult paths in ProgrammerCatArt.kt. -->
-    <g transform="translate(887 379) scale(1.32)" stroke="#5b3a29" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
-      <path d="M40-16Q86-6 79-70Q77-94 63-90" fill="none" stroke-width="17"/><path d="M40-16Q86-6 79-70Q77-94 63-90" fill="none" stroke="#c98a4b" stroke-width="11"/>
-      <circle cx="63" cy="-90" r="5.5" fill="url(#fur)" stroke="none"/>
-      <ellipse cy="-55" rx="42" ry="55" fill="url(#fur)"/><ellipse cx="-22" cy="-62" rx="14" ry="28" fill="url(#patch)" stroke="none"/>
-      <ellipse cx="-17" cy="-6" rx="14" ry="8" fill="url(#fur)"/><ellipse cx="17" cy="-6" rx="14" ry="8" fill="url(#fur)"/>
-      <path d="M-42-154-43-192Q-41-197-35-193L-12-176Z" fill="url(#fur)"/><path d="M-35-160V-184L-20-174Z" fill="#f6a5b5" stroke="none"/>
-      <path d="M42-154 43-192Q41-197 35-193L12-176Z" fill="url(#patch)"/><path d="M35-160V-184L20-174Z" fill="#f6a5b5" stroke="none"/>
-      <ellipse cy="-138" rx="48" ry="40" fill="url(#fur)" stroke="none"/>
-      <path d="M44-142Q38-160 26-170Q8-176 2-170Q16-158 20-144Q32-136 44-142Z" fill="url(#patch)" stroke="none"/>
-      <ellipse cy="-138" rx="48" ry="40" fill="none"/>
-      <g fill="#ffb3c0" stroke="none"><ellipse cx="-37" cy="-120" rx="7" ry="4.5"/><ellipse cx="37" cy="-120" rx="7" ry="4.5"/></g>
-      <g fill="#2a1b14" stroke="none"><circle cx="-21.5" cy="-137" r="7.5"/><circle cx="21.5" cy="-137" r="7.5"/></g>
-      <g fill="#e6f1ff" fill-opacity=".5" stroke="#27408b" stroke-width="3.5"><rect x="-37" y="-150" width="31" height="26" rx="10"/><rect x="6" y="-150" width="31" height="26" rx="10"/><path d="M-6-138H6M-37-138-46-142M37-138 46-142" fill="none"/></g>
-      <g fill="#fff" stroke="none"><circle cx="-24" cy="-141" r="3"/><circle cx="19" cy="-141" r="3"/></g>
-      <path d="M-34-158Q-22-163-10-158M10-158Q22-163 34-158" fill="none" stroke-width="2.5"/>
-      <path d="M-4.5-122H4.5L0-116.5Z" fill="#f08ca0" stroke-width="2"/><path d="M0-116.5Q-4-110-9-113M0-116.5Q4-110 9-113" fill="none" stroke-width="2.5"/>
-      <path d="M-42-118-66-122M-42-113-66-112M42-118 66-122M42-113 66-112" fill="none" stroke-width="1.8"/>
-      <path d="M0-98-18-108V-88ZM0-98 18-108V-88Z" fill="#d64545" stroke-width="2.5"/><circle cy="-98" r="5" fill="#b83232"/>
-      <rect x="-36" y="-67" width="72" height="46" rx="5" fill="#152531" stroke="#738298" stroke-width="2"/>
-      <g stroke="none"><rect x="-28" y="-58" width="26" height="3" rx="1.5" fill="#81c784"/><rect x="-20" y="-50" width="40" height="3" rx="1.5" fill="#ae95ff"/><rect x="-20" y="-42" width="23" height="3" rx="1.5" fill="#ffd166"/><rect x="-28" y="-34" width="31" height="3" rx="1.5" fill="#6fb1ff"/></g>
-      <path d="M-44-21H44L36-12H-36Z" fill="#bcc5d3" stroke="#738298" stroke-width="2"/>
-      <ellipse cx="-29" cy="-14" rx="9" ry="7" fill="url(#fur)"/><ellipse cx="29" cy="-14" rx="9" ry="7" fill="url(#fur)"/>
+
+    <!-- Left Side: Terminal Code Card & Stats -->
+    <g transform="translate(48, 86)">
+      <!-- Cyber Window Container -->
+      <rect width="440" height="340" rx="20" fill="#080f16" fill-opacity="0.88" stroke="#1c303f" stroke-width="1.5"/>
+      <rect width="440" height="340" rx="20" fill="none" stroke="url(#neonCyanMint)" stroke-width="2" opacity="0.3"/>
+
+      <!-- Window Header -->
+      <rect width="440" height="38" rx="20" fill="#0d1720"/>
+      <rect y="20" width="440" height="18" fill="#0d1720"/>
+      <line x1="0" y1="38" x2="440" y2="38" stroke="#1b2a37" stroke-width="1"/>
+      <circle cx="22" cy="19" r="4" fill="#00f5a0"/>
+      <text x="36" y="23" font-family="JetBrains Mono, monospace" font-size="12" fill="#7593a8" font-weight="600">CodePetEngine.kt</text>
+      <text x="360" y="23" font-family="JetBrains Mono, monospace" font-size="11" fill="#4d6577">UTF-8</text>
+
+      <!-- Code Syntax inside Editor -->
+      <g font-family="JetBrains Mono, Consolas, monospace" font-size="13" xml:space="preserve">
+        <!-- Line numbers -->
+        <g fill="#2d4253">
+          <text x="18" y="70">01</text>
+          <text x="18" y="96">02</text>
+          <text x="18" y="122">03</text>
+          <text x="18" y="148">04</text>
+          <text x="18" y="174">05</text>
+          <text x="18" y="200">06</text>
+          <text x="18" y="226">07</text>
+          <text x="18" y="252">08</text>
+          <text x="18" y="278">09</text>
+          <text x="18" y="304">10</text>
+        </g>
+        <line x1="44" y1="50" x2="44" y2="320" stroke="#15232e" stroke-width="1"/>
+
+        <!-- Kotlin Code -->
+        <g transform="translate(56, 0)">
+          <text x="0" y="70"><tspan fill="#ff79c6">package</tspan> <tspan fill="#f8f8f2">dev.codepet.app</tspan></text>
+          <text x="0" y="96"><tspan fill="#ff79c6">fun</tspan> <tspan fill="#50fa7b">feedCodey</tspan><tspan fill="#f8f8f2">(challenge: </tspan><tspan fill="#8be9fd">Solution</tspan><tspan fill="#f8f8f2">) {</tspan></text>
+          <text x="16" y="122"><tspan fill="#ff79c6">val</tspan> <tspan fill="#f8f8f2">xp = challenge.</tspan><tspan fill="#50fa7b">solve</tspan><tspan fill="#f8f8f2">() * </tspan><tspan fill="#bd93f9">2</tspan></text>
+          <text x="16" y="148"><tspan fill="#f8f8f2">codey.</tspan><tspan fill="#50fa7b">health</tspan><tspan fill="#ff79c6"> += </tspan><tspan fill="#bd93f9">25</tspan></text>
+          <text x="16" y="174"><tspan fill="#f8f8f2">codey.</tspan><tspan fill="#50fa7b">energy</tspan><tspan fill="#ff79c6"> += </tspan><tspan fill="#bd93f9">15</tspan></text>
+          <text x="16" y="200"><tspan fill="#ff79c6">if</tspan> <tspan fill="#f8f8f2">(codey.canEvolve()) {</tspan></text>
+          <text x="32" y="226"><tspan fill="#f8f8f2">codey.</tspan><tspan fill="#50fa7b">unlockHat</tspan><tspan fill="#f8f8f2">(</tspan><tspan fill="#f1fa8c">"cyber_hoodie"</tspan><tspan fill="#f8f8f2">)</tspan></text>
+          <text x="16" y="252"><tspan fill="#f8f8f2">}</tspan></text>
+          <text x="16" y="278"><tspan fill="#6272a4">// Status: 0 errors · Happy Codey</tspan></text>
+          <text x="0" y="304"><tspan fill="#f8f8f2">} </tspan><tspan class="anim-cursor" fill="#00f5a0" font-weight="900">█</tspan></text>
+        </g>
+      </g>
+
+      <!-- Active Status Floating Pill below Editor -->
+      <g transform="translate(15, 360)">
+        <rect width="195" height="34" rx="17" fill="#0f231d" stroke="#00f5a0" stroke-width="1.5"/>
+        <circle cx="18" cy="17" r="4" fill="#00f5a0"/>
+        <text x="30" y="22" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#00f5a0">XP BOOST ACTIVE +100%</text>
+      </g>
+      <g transform="translate(225, 360)">
+        <rect width="195" height="34" rx="17" fill="#1b1534" stroke="#7b2cbf" stroke-width="1.5"/>
+        <text x="24" y="22" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700" fill="#c499f5">⚡ JETPACK COMPOSE</text>
+      </g>
     </g>
-    <g fill="none" stroke="#81c784" stroke-opacity=".5" stroke-width="1.5"><rect x="681" y="127" width="55" height="43" rx="12" transform="rotate(-12 708 148)"/><path d="m695 141-6 7 6 7m26-14 6 7-6 7m-10-17-7 22"/></g>
-    <g fill="none" stroke="#b198ff" stroke-opacity=".5" stroke-width="1.5"><rect x="1064" y="286" width="61" height="47" rx="12" transform="rotate(12 1094 309)"/><path d="M1085 299Q1079 299 1079 305V309Q1079 313 1075 313Q1079 313 1079 317V321Q1079 326 1085 326M1102 299Q1108 299 1108 305V309Q1108 313 1112 313Q1108 313 1108 317V321Q1108 326 1102 326"/></g>
-    <g fill="#ffd166"><use href="#spark" x="1033" y="129"/><use href="#spark" transform="translate(706 303) scale(.6)"/><use href="#spark" transform="translate(1110 192) scale(.45)"/></g>
-    <g fill="#81c784"><circle cx="774" cy="97" r="3"/><circle cx="1041" cy="383" r="3"/></g>
-    <path d="M32 479H1168" stroke="url(#edge)" stroke-width="3"/>
+
+    <!-- Floating Holographic Badge 1 (Left of Codey) -->
+    <g transform="translate(530, 95)">
+      <g class="anim-card-l">
+        <rect width="140" height="74" rx="16" fill="#091420" fill-opacity="0.92" stroke="#00f5a0" stroke-width="1.5" filter="url(#glowSubtle)"/>
+        <text x="18" y="28" font-family="JetBrains Mono, monospace" font-size="11" fill="#7ba3bc">&lt;streak&gt;</text>
+        <text x="18" y="54" font-family="Inter, sans-serif" font-size="19" font-weight="800" fill="#00f5a0">14 DÍAS 🔥</text>
+      </g>
+    </g>
+
+    <!-- Floating Holographic Badge 2 (Right of Codey) -->
+    <g transform="translate(1015, 175)">
+      <g class="anim-card-r">
+        <rect width="145" height="76" rx="16" fill="#140f28" fill-opacity="0.92" stroke="#7b2cbf" stroke-width="1.5" filter="url(#glowSubtle)"/>
+        <text x="16" y="26" font-family="JetBrains Mono, monospace" font-size="11" fill="#b993eb">{ focus: 50m }</text>
+        <text x="16" y="52" font-family="Inter, sans-serif" font-size="17" font-weight="800" fill="#ffd166">+250 BYTES</text>
+        <circle cx="126" cy="47" r="4" fill="#ffd166"/>
+      </g>
+    </g>
+
+    <!-- Orbital Cyber Rings behind Codey -->
+    <g transform="translate(850, 270)">
+      <g class="anim-orbit">
+        <ellipse cx="0" cy="0" rx="220" ry="85" fill="none" stroke="#7b2cbf" stroke-width="1.5" stroke-opacity="0.45" stroke-dasharray="8 12"/>
+        <ellipse cx="0" cy="0" rx="190" ry="110" fill="none" stroke="#00f5a0" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="4 8"/>
+        <circle cx="220" cy="0" r="4" fill="#00d2ff"/>
+        <circle cx="-190" cy="0" r="3" fill="#00f5a0"/>
+      </g>
+    </g>
+
+    <!-- Sparkles and Ambient Stars -->
+    <g class="anim-star-1">
+      <path d="M 730 95 Q 732 103 740 105 Q 732 107 730 115 Q 728 107 720 105 Q 728 103 730 95 Z" fill="#00f5a0"/>
+    </g>
+    <g class="anim-star-2">
+      <path d="M 1080 142 Q 1082 148 1088 150 Q 1082 152 1080 158 Q 1078 152 1072 150 Q 1078 148 1080 142 Z" fill="#ffd166"/>
+    </g>
+    <g class="anim-star-3">
+      <path d="M 640 272 Q 642 278 648 280 Q 642 282 640 288 Q 638 282 632 280 Q 638 278 640 272 Z" fill="#bd93f9"/>
+    </g>
+
+    <!-- CODEY THE PROGRAMMER CAT -->
+    <!-- Outer Position Group (fixed translate) -->
+    <g transform="translate(850, 275)">
+      <!-- Desk Shadow / Cyber Platform -->
+      <ellipse cx="0" cy="180" rx="200" ry="38" fill="#050a10" fill-opacity="0.75"/>
+      <ellipse cx="0" cy="180" rx="200" ry="38" fill="none" stroke="#00f5a0" stroke-width="2" stroke-opacity="0.4" filter="url(#glowSubtle)"/>
+
+      <!-- Inner Animated Group (floating) -->
+      <g class="anim-float">
+        <!-- Fluffy cat tail arched upwards -->
+        <g class="anim-tail">
+          <path d="M 65 60 C 120 70 145 10 125 -30 C 115 -50 90 -45 92 -25 C 95 0 80 40 45 68" fill="url(#patchGrad)" stroke="#4a2b13" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="108" cy="-35" r="9" fill="url(#furGrad)" stroke="#4a2b13" stroke-width="2.5"/>
+        </g>
+
+        <!-- Cat Body -->
+        <ellipse cx="0" cy="70" rx="65" ry="75" fill="url(#furGrad)" stroke="#4a2b13" stroke-width="3.5"/>
+        <!-- Calico Body Patch -->
+        <path d="M -30 20 C -10 20 0 50 -10 90 C -35 110 -60 90 -55 50 Z" fill="url(#patchGrad)"/>
+
+        <!-- Left Ear (Calico Patch) -->
+        <g>
+          <path d="M -56 -60 L -68 -125 C -66 -132 -54 -130 -42 -122 L -14 -90 Z" fill="url(#patchGrad)" stroke="#4a2b13" stroke-width="3.5" stroke-linejoin="round"/>
+          <path d="M -56 -66 L -62 -112 L -32 -94 Z" fill="#ff9ebb"/>
+        </g>
+
+        <!-- Right Ear (Cream Fur) -->
+        <g>
+          <path d="M 56 -60 L 68 -125 C 66 -132 54 -130 42 -122 L 14 -90 Z" fill="url(#furGrad)" stroke="#4a2b13" stroke-width="3.5" stroke-linejoin="round"/>
+          <path d="M 56 -66 L 62 -112 L 32 -94 Z" fill="#ff9ebb"/>
+        </g>
+
+        <!-- Head Base -->
+        <ellipse cx="0" cy="-45" rx="72" ry="58" fill="url(#furGrad)" stroke="#4a2b13" stroke-width="3.5"/>
+
+        <!-- Head Calico Patch -->
+        <path d="M 20 -95 C 45 -100 68 -80 72 -50 C 72 -25 55 -5 30 -10 C 22 -35 18 -70 20 -95 Z" fill="url(#patchGrad)"/>
+
+        <!-- Whiskers -->
+        <g stroke="#4a2b13" stroke-width="2" stroke-linecap="round" fill="none">
+          <path d="M -55 -40 C -80 -44 -100 -42 -115 -38"/>
+          <path d="M -55 -32 C -80 -30 -100 -24 -112 -18"/>
+          <path d="M 55 -40 C 80 -44 100 -42 115 -38"/>
+          <path d="M 55 -32 C 80 -30 100 -24 112 -18"/>
+        </g>
+
+        <!-- Rosy Cheeks -->
+        <ellipse cx="-48" cy="-22" rx="10" ry="7" fill="#ff708d" opacity="0.8"/>
+        <ellipse cx="48" cy="-22" rx="10" ry="7" fill="#ff708d" opacity="0.8"/>
+
+        <!-- Eyes -->
+        <g fill="#1a120c">
+          <circle cx="-28" cy="-45" r="14"/>
+          <circle cx="28" cy="-45" r="14"/>
+        </g>
+        <!-- Eye Highlights -->
+        <g fill="#ffffff">
+          <circle cx="-32" cy="-50" r="5.5"/>
+          <circle cx="-22" cy="-40" r="2.8"/>
+          <circle cx="24" cy="-50" r="5.5"/>
+          <circle cx="34" cy="-40" r="2.8"/>
+        </g>
+
+        <!-- Programmer Glasses with Blue Tech Frames -->
+        <g filter="url(#glowSubtle)">
+          <rect x="-56" y="-68" width="52" height="42" rx="15" fill="#0284c7" fill-opacity="0.25" stroke="#00d2ff" stroke-width="4.5"/>
+          <rect x="4" y="-68" width="52" height="42" rx="15" fill="#0284c7" fill-opacity="0.25" stroke="#00d2ff" stroke-width="4.5"/>
+          <path d="M -4 -47 H 4 M -56 -47 H -68 M 56 -47 H 68" stroke="#00d2ff" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="-42" y1="-62" x2="-22" y2="-32" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+          <line x1="18" y1="-62" x2="38" y2="-32" stroke="#ffffff" stroke-width="3" stroke-linecap="round" opacity="0.75"/>
+        </g>
+
+        <!-- Cute Pink Nose & Confident Smile -->
+        <path d="M -6 -28 H 6 L 0 -22 Z" fill="#f43f5e"/>
+        <path d="M 0 -22 C -6 -14 -14 -15 -18 -19 M 0 -22 C 6 -14 14 -15 18 -19" fill="none" stroke="#4a2b13" stroke-width="3" stroke-linecap="round"/>
+
+        <!-- Ahoge Tuft -->
+        <path d="M 0 -102 C -10 -130 15 -130 10 -114" fill="none" stroke="#4a2b13" stroke-width="5" stroke-linecap="round"/>
+
+        <!-- Collar & Bowtie -->
+        <path d="M 0 10 L -28 -5 V 25 Z" fill="#ef4444" stroke="#4a2b13" stroke-width="2"/>
+        <path d="M 0 10 L 28 -5 V 25 Z" fill="#ef4444" stroke="#4a2b13" stroke-width="2"/>
+        <circle cx="0" cy="10" r="8" fill="#b91c1c" stroke="#4a2b13" stroke-width="2"/>
+        <circle cx="0" cy="10" r="3.5" fill="#ffd166"/>
+
+        <!-- Futuristic Laptop Screen Glow Cone -->
+        <polygon points="-80,85 80,85 140,0 -140,0" fill="url(#screenBeam)"/>
+
+        <!-- Laptop Screen Back / Front -->
+        <g transform="translate(0, 80)">
+          <!-- Laptop Monitor Lid -->
+          <rect x="-65" y="-55" width="130" height="75" rx="8" fill="#111c26" stroke="#00f5a0" stroke-width="2.5" filter="url(#glowSubtle)"/>
+          <!-- Glowing Display with code lines -->
+          <rect x="-58" y="-48" width="116" height="61" rx="4" fill="#081018"/>
+          <g stroke-linecap="round" stroke-width="2.5">
+            <line x1="-48" y1="-38" x2="-10" y2="-38" stroke="#00f5a0"/>
+            <line x1="-5" y1="-38" x2="25" y2="-38" stroke="#ff79c6"/>
+            <line x1="-40" y1="-26" x2="35" y2="-26" stroke="#00d2ff"/>
+            <line x1="-40" y1="-14" x2="-2" y2="-14" stroke="#ffd166"/>
+            <line x1="5" y1="-14" x2="42" y2="-14" stroke="#bd93f9"/>
+            <line x1="-48" y1="-2" x2="-15" y2="-2" stroke="#50fa7b"/>
+          </g>
+          <circle cx="36" cy="-2" r="3" fill="#00f5a0" class="anim-cursor"/>
+
+          <!-- Laptop Keyboard Base -->
+          <polygon points="-85,22 85,22 65,42 -65,42" fill="#1b2936" stroke="#2e495e" stroke-width="2"/>
+          <polygon points="-58,26 58,26 46,38 -46,38" fill="#0f1922"/>
+          <rect x="-14" y="32" width="28" height="6" rx="2" fill="#2e495e"/>
+        </g>
+
+        <!-- Typing Paws over Laptop -->
+        <g transform="translate(-40, 96)">
+          <g class="anim-paw-l">
+            <ellipse cx="0" cy="0" rx="16" ry="12" fill="url(#furGrad)" stroke="#4a2b13" stroke-width="2.5"/>
+            <circle cx="-5" cy="5" r="3" fill="#ffb4c3"/>
+            <circle cx="5" cy="5" r="3" fill="#ffb4c3"/>
+          </g>
+        </g>
+        <g transform="translate(40, 96)">
+          <g class="anim-paw-r">
+            <ellipse cx="0" cy="0" rx="16" ry="12" fill="url(#furGrad)" stroke="#4a2b13" stroke-width="2.5"/>
+            <circle cx="-5" cy="5" r="3" fill="#ffb4c3"/>
+            <circle cx="5" cy="5" r="3" fill="#ffb4c3"/>
+          </g>
+        </g>
+      </g>
+    </g>
+
+    <!-- Bottom Gradient Edge Glow -->
+    <rect x="0" y="515" width="1200" height="5" fill="url(#neonCyanMint)"/>
   </g>
-  <rect x="1" y="1" width="1198" height="478" rx="30" fill="none" stroke="#383b56"/>
+
+  <!-- Outer Cyber Border -->
+  <rect x="1" y="1" width="1198" height="518" rx="28" fill="none" stroke="#253545" stroke-width="2"/>
 </svg>

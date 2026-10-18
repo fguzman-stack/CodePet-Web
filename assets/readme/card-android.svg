@@ -1,11 +1,84 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="420" height="190" viewBox="0 0 420 190" role="img" aria-labelledby="title desc">
-  <title id="title">Android systems feature card</title>
-  <desc id="desc">Feature card for Android architecture systems.</desc>
-  <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#FFD54F"/><stop offset="1" stop-color="#81C784"/></linearGradient><style>text{font-family:Consolas,Menlo,monospace}</style></defs>
-  <rect width="420" height="190" rx="24" fill="#0D1117"/><rect x="1" y="1" width="418" height="188" rx="23" fill="none" stroke="url(#g)" stroke-width="2"/>
-  <circle cx="52" cy="48" r="24" fill="#2B2410" stroke="#FFD54F"/><text x="38" y="56" fill="#FFF3B0" font-size="25">{ }</text>
-  <text x="92" y="41" fill="#FFD54F" font-size="14">module.android</text><text x="92" y="65" fill="#FFFBE8" font-size="24" font-weight="700">Native Systems</text>
-  <text x="34" y="106" fill="#C9D1D9" font-size="15">Room v7, DataStore, WorkManager</text>
-  <text x="34" y="132" fill="#C9D1D9" font-size="15">Compose Canvas + launcher widget</text>
-  <text x="34" y="158" fill="#8B949E" font-size="13">Built like a real Android app.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="220" viewBox="0 0 460 220" role="img" aria-labelledby="title desc">
+  <title id="title">Android Systems Feature</title>
+  <desc id="desc">Módulo de sistemas nativos de Android: Room, Compose, DataStore y arquitectura local-first.</desc>
+  <defs>
+    <linearGradient id="cardBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a141b"/>
+      <stop offset="100%" stop-color="#181510"/>
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffd166"/>
+      <stop offset="100%" stop-color="#00f5a0"/>
+    </linearGradient>
+    <filter id="cardGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      @keyframes androidBlink {
+        0%, 95%, 100% { opacity: 1; }
+        97% { opacity: 0; }
+      }
+      @keyframes floatChip {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+      }
+      .anim-eyes { animation: androidBlink 4s infinite; }
+      .anim-chip { animation: floatChip 4s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- Card Body -->
+  <rect width="460" height="220" rx="22" fill="url(#cardBg)"/>
+  <rect x="1" y="1" width="458" height="218" rx="21" fill="none" stroke="url(#borderGrad)" stroke-width="1.8"/>
+
+  <!-- Module Badge & Android Head Icon -->
+  <g class="anim-chip">
+    <circle cx="52" cy="48" r="24" fill="#2d2510" stroke="#ffd166" stroke-width="2" filter="url(#cardGlow)"/>
+    <!-- Android Head -->
+    <path d="M40 54 A12 12 0 0 1 64 54 Z" fill="#3ddc84"/>
+    <!-- Antennas -->
+    <line x1="43" y1="44" x2="38" y2="38" stroke="#3ddc84" stroke-width="2" stroke-linecap="round"/>
+    <line x1="61" y1="44" x2="66" y2="38" stroke="#3ddc84" stroke-width="2" stroke-linecap="round"/>
+    <!-- Eyes -->
+    <g class="anim-eyes">
+      <circle cx="47" cy="48" r="1.8" fill="#081016"/>
+      <circle cx="57" cy="48" r="1.8" fill="#081016"/>
+    </g>
+  </g>
+
+  <g transform="translate(94, 38)">
+    <rect x="0" y="-3" width="120" height="20" rx="6" fill="#2d2510" stroke="#ffd166" stroke-width="1" opacity="0.8"/>
+    <text x="8" y="11" fill="#ffe082" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">MODULE.ANDROID</text>
+    <text x="0" y="36" fill="#fffbe8" font-family="Inter, sans-serif" font-size="22" font-weight="800">Native Systems</text>
+  </g>
+
+  <!-- Subtitle and bullets -->
+  <g transform="translate(34, 112)">
+    <!-- Bullet 1 -->
+    <circle cx="6" cy="6" r="3" fill="#3ddc84"/>
+    <text x="18" y="10" fill="#effff5" font-family="Inter, sans-serif" font-size="14" font-weight="600">Room v7, DataStore &amp; WorkManager</text>
+
+    <!-- Bullet 2 -->
+    <circle cx="6" cy="32" r="3" fill="#ffd166"/>
+    <text x="18" y="36" fill="#d2e0d8" font-family="Inter, sans-serif" font-size="14">Compose Canvas animado + widget de pantalla</text>
+
+    <!-- Tech Stack Pills -->
+    <g transform="translate(18, 54)">
+      <rect width="65" height="22" rx="6" fill="#143022" stroke="#3ddc84" stroke-width="1"/>
+      <text x="8" y="15" fill="#3ddc84" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">COMPOSE</text>
+
+      <rect x="75" width="55" height="22" rx="6" fill="#2b2410" stroke="#ffd166" stroke-width="1"/>
+      <text x="83" y="15" fill="#ffd166" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">ROOM 7</text>
+
+      <rect x="140" width="75" height="22" rx="6" fill="#1d1b32" stroke="#7b2cbf" stroke-width="1"/>
+      <text x="148" y="15" fill="#c499f5" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">DATASTORE</text>
+    </g>
+
+    <!-- Footer tagline -->
+    <text x="0" y="98" fill="#7fa091" font-family="JetBrains Mono, monospace" font-size="12">Arquitectura moderna 100% Kotlin sin dependencias externas.</text>
+  </g>
 </svg>

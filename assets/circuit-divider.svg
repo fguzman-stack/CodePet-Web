@@ -1,6 +1,78 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="40" viewBox="0 0 1200 40" role="img" aria-label="">
-  <defs><linearGradient id="fade"><stop stop-color="#81c784" stop-opacity="0"/><stop offset=".3" stop-color="#81c784" stop-opacity=".5"/><stop offset=".7" stop-color="#9f86ff" stop-opacity=".5"/><stop offset="1" stop-color="#9f86ff" stop-opacity="0"/></linearGradient></defs>
-  <path d="M0 20H530L540 10H565M635 10H660L670 20H1200" fill="none" stroke="url(#fade)"/>
-  <g fill="none" stroke="#81c784" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m584 13-7 7 7 7m32-14 7 7-7 7m-12-17-8 20"/></g>
-  <g fill="#9f86ff"><circle cx="565" cy="10" r="2"/><circle cx="635" cy="10" r="2"/></g>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="50" viewBox="0 0 1200 50" role="img" aria-label="Divisor de circuito interactivo">
+  <defs>
+    <linearGradient id="divGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00f5a0" stop-opacity="0"/>
+      <stop offset="25%" stop-color="#00f5a0" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#7b2cbf" stop-opacity="1"/>
+      <stop offset="75%" stop-color="#00d2ff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#00d2ff" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="divGlow" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <style>
+      @keyframes pulseBeamLeft {
+        0% { stroke-dashoffset: 600; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes pulseBeamRight {
+        0% { stroke-dashoffset: -600; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes nodeBlink {
+        0%, 100% { transform: scale(1); opacity: 0.6; }
+        50% { transform: scale(1.4); opacity: 1; }
+      }
+      @keyframes centerSpin {
+        0%, 100% { transform: rotate(0deg); }
+        50% { transform: rotate(180deg); }
+      }
+
+      .wire-left { stroke-dasharray: 40 80; animation: pulseBeamLeft 4s linear infinite; }
+      .wire-right { stroke-dasharray: 40 80; animation: pulseBeamRight 4s linear infinite; }
+      .node-pulse { transform-origin: center; animation: nodeBlink 2s ease-in-out infinite; }
+      .node-pulse-delay { transform-origin: center; animation: nodeBlink 2s ease-in-out infinite 1s; }
+    </style>
+  </defs>
+
+  <!-- Base Inactive Circuit Lines -->
+  <g fill="none" stroke="#1f3344" stroke-width="2" opacity="0.4" stroke-linecap="round">
+    <path d="M 0 25 H 480 L 515 12 H 560"/>
+    <path d="M 1200 25 H 720 L 685 12 H 640"/>
+    <path d="M 150 25 L 175 38 H 340 L 360 25"/>
+    <path d="M 1050 25 L 1025 38 H 860 L 840 25"/>
+  </g>
+
+  <!-- Animated Glowing Energy Pulses -->
+  <g fill="none" stroke="url(#divGrad)" stroke-width="2.5" stroke-linecap="round" filter="url(#divGlow)">
+    <path class="wire-left" d="M 0 25 H 480 L 515 12 H 560"/>
+    <path class="wire-right" d="M 1200 25 H 720 L 685 12 H 640"/>
+    <path class="wire-left" d="M 150 25 L 175 38 H 340 L 360 25"/>
+    <path class="wire-right" d="M 1050 25 L 1025 38 H 860 L 840 25"/>
+  </g>
+
+  <!-- Circuit Junction Nodes -->
+  <g filter="url(#divGlow)">
+    <circle class="node-pulse" cx="480" cy="25" r="3.5" fill="#00f5a0"/>
+    <circle class="node-pulse-delay" cx="560" cy="12" r="3.5" fill="#7b2cbf"/>
+    <circle class="node-pulse" cx="640" cy="12" r="3.5" fill="#7b2cbf"/>
+    <circle class="node-pulse-delay" cx="720" cy="25" r="3.5" fill="#00d2ff"/>
+    <circle cx="175" cy="38" r="2.5" fill="#00f5a0"/>
+    <circle cx="1025" cy="38" r="2.5" fill="#00d2ff"/>
+  </g>
+
+  <!-- Central Cyber Badge / Diamond -->
+  <g transform="translate(600, 25)" filter="url(#divGlow)">
+    <!-- Hexagonal Core -->
+    <polygon points="0,-18 20,-8 20,8 0,18 -20,8 -20,-8" fill="#0c1722" stroke="#00f5a0" stroke-width="2"/>
+    <polygon points="0,-10 11,-4 11,4 0,10 -11,4 -11,-4" fill="#7b2cbf" opacity="0.7"/>
+    <!-- Terminal Code Glyph </> inside Center -->
+    <path d="M -6 -4 L -10 0 L -6 4 M 6 -4 L 10 0 L 6 4 M 2 -6 L -2 6" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
 </svg>

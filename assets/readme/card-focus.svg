@@ -1,11 +1,82 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="420" height="190" viewBox="0 0 420 190" role="img" aria-labelledby="title desc">
-  <title id="title">Focus feature card</title>
-  <desc id="desc">Feature card for Pomodoro focus sessions.</desc>
-  <defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="#64B5F6"/><stop offset="1" stop-color="#81C784"/></linearGradient><style>text{font-family:Consolas,Menlo,monospace}</style></defs>
-  <rect width="420" height="190" rx="24" fill="#0D1117"/><rect x="1" y="1" width="418" height="188" rx="23" fill="none" stroke="url(#g)" stroke-width="2"/>
-  <circle cx="52" cy="48" r="24" fill="#102238" stroke="#64B5F6"/><path d="M52 32v18l12 8" fill="none" stroke="#D6EEFF" stroke-width="5" stroke-linecap="round"/>
-  <text x="92" y="41" fill="#75C8FF" font-size="14">module.focus</text><text x="92" y="65" fill="#F4FBFF" font-size="24" font-weight="700">Focus Rewards</text>
-  <text x="34" y="106" fill="#C9D1D9" font-size="15">15, 25 or 50 minute sessions</text>
-  <text x="34" y="132" fill="#C9D1D9" font-size="15">XP + Bytes for actual study time</text>
-  <text x="34" y="158" fill="#8B949E" font-size="13">Pomodoro becomes pet progress.</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="220" viewBox="0 0 460 220" role="img" aria-labelledby="title desc">
+  <title id="title">Focus Mode Feature</title>
+  <desc id="desc">Módulo Pomodoro con sesiones de 15, 25 y 50 minutos con acumulación de Bytes.</desc>
+  <defs>
+    <linearGradient id="cardBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1520"/>
+      <stop offset="100%" stop-color="#0e1d18"/>
+    </linearGradient>
+    <linearGradient id="borderGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00d2ff"/>
+      <stop offset="100%" stop-color="#00f5a0"/>
+    </linearGradient>
+    <filter id="cardGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <style>
+      @keyframes clockHandRotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes ringGlow {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+      }
+      .anim-hand { transform-origin: 52px 48px; animation: clockHandRotate 12s linear infinite; }
+      .anim-ring { animation: ringGlow 3s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- Card Body -->
+  <rect width="460" height="220" rx="22" fill="url(#cardBg)"/>
+  <rect x="1" y="1" width="458" height="218" rx="21" fill="none" stroke="url(#borderGrad)" stroke-width="1.8"/>
+
+  <!-- Module Badge & Focus Timer Icon -->
+  <g>
+    <circle cx="52" cy="48" r="24" fill="#0f2936" stroke="#00d2ff" stroke-width="2" filter="url(#cardGlow)"/>
+    <!-- Outer dashed minute markers -->
+    <circle class="anim-ring" cx="52" cy="48" r="19" fill="none" stroke="#00f5a0" stroke-width="1.5" stroke-dasharray="2 4"/>
+    <!-- Clock Hand -->
+    <g class="anim-hand">
+      <line x1="52" y1="48" x2="52" y2="35" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <line x1="52" y1="48" x2="62" y2="48" stroke="#00d2ff" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="52" cy="48" r="3" fill="#00f5a0"/>
+  </g>
+
+  <g transform="translate(94, 38)">
+    <rect x="0" y="-3" width="108" height="20" rx="6" fill="#0f2936" stroke="#00d2ff" stroke-width="1" opacity="0.8"/>
+    <text x="8" y="11" fill="#75d8ff" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">MODULE.FOCUS</text>
+    <text x="0" y="36" fill="#f4fbff" font-family="Inter, sans-serif" font-size="22" font-weight="800">Focus Rewards</text>
+  </g>
+
+  <!-- Subtitle and bullets -->
+  <g transform="translate(34, 112)">
+    <!-- Bullet 1 -->
+    <circle cx="6" cy="6" r="3" fill="#00d2ff"/>
+    <text x="18" y="10" fill="#effff5" font-family="Inter, sans-serif" font-size="14" font-weight="600">Sesiones Pomodoro de 15, 25 y 50 minutos</text>
+
+    <!-- Bullet 2 -->
+    <circle cx="6" cy="32" r="3" fill="#00f5a0"/>
+    <text x="18" y="36" fill="#d2e0d8" font-family="Inter, sans-serif" font-size="14">Gana XP + Bytes por cada bloque de estudio</text>
+
+    <!-- Session Badges -->
+    <g transform="translate(18, 54)">
+      <rect width="52" height="22" rx="6" fill="#132a38" stroke="#00d2ff" stroke-width="1"/>
+      <text x="12" y="15" fill="#75d8ff" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">15m</text>
+
+      <rect x="62" width="52" height="22" rx="6" fill="#14362b" stroke="#00f5a0" stroke-width="1"/>
+      <text x="74" y="15" fill="#00f5a0" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">25m</text>
+
+      <rect x="124" width="52" height="22" rx="6" fill="#2d1c3a" stroke="#7b2cbf" stroke-width="1"/>
+      <text x="136" y="15" fill="#bd93f9" font-family="JetBrains Mono, monospace" font-size="11" font-weight="700">50m</text>
+    </g>
+
+    <!-- Footer tagline -->
+    <text x="0" y="98" fill="#7fa091" font-family="JetBrains Mono, monospace" font-size="12">Tu disciplina se traduce directamente en bienestar.</text>
+  </g>
 </svg>
