@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d1720">
+  <meta name="description" content="CodePet: aprende a programar mientras cuidas a Codey, tu mascota programadora.">
+  <title>CodePet · Aprende código. Cuida a Codey.</title>
+  <link rel="icon" href="assets/codey-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="CodePet, inicio"><img src="assets/codey-logo.svg" alt=""> <span>Code<span>Pet</span></span></a>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#como-funciona" data-i18n="navHow">Cómo funciona</a>
+      <a href="#funciones" data-i18n="navFeatures">Funciones</a>
+      <a href="#capturas" data-i18n="navScreens">Capturas</a>
+      <a href="#instalar" data-i18n="navInstall">Instalar</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="languageToggle" type="button" aria-label="Cambiar idioma">ES</button>
+      <button class="icon-button" id="themeToggle" type="button" aria-label="Cambiar tema">☼</button>
+      <button class="menu-button" id="menuToggle" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">ANDROID · APRENDE OFFLINE</span></p>
+        <h1 data-i18n="heroTitle">Aprende a programar.<br><em>Cuida a Codey.</em></h1>
+        <p class="hero-lead" data-i18n="heroLead">Una mascota virtual que convierte cada reto de código, sesión de foco y pequeño progreso en una aventura que quieres continuar.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://github.com/fguzman-stack/CodePet/releases/latest" target="_blank" rel="noreferrer"><span>↓</span> <span data-i18n="download">Descargar APK</span></a>
+          <a class="button button-ghost" href="#como-funciona" data-i18n="discover">Descubrir CodePet →</a>
+        </div>
+        <div class="hero-meta"><span>✓ Android 7+</span><span>✓ 100% local-first</span><span>✓ MIT License</span></div>
+      </div>
+      <div class="hero-art reveal reveal-delay"><img src="assets/codey-hero.svg" alt="Codey, gato programador frente a su laptop en un universo terminal" fetchpriority="high"></div>
+    </section>
+
+    <section class="ticker" aria-label="Características"><div class="ticker-track"><span>STUDY</span><b>✦</b><span>SOLVE</span><b>✦</b><span>EARN</span><b>✦</b><span>CARE</span><b>✦</b><span>EVOLVE</span><b>✦</b><span>STUDY</span><b>✦</b><span>SOLVE</span><b>✦</b><span>EARN</span><b>✦</b><span>CARE</span><b>✦</b><span>EVOLVE</span></div></section>
+
+    <section class="section-shell intro" id="como-funciona">
+      <div class="section-heading reveal"><p class="eyebrow" data-i18n="loopEyebrow">EL CICLO CODEPET</p><h2 data-i18n="loopTitle">Cada línea de código<br><em>alimenta algo.</em></h2><p data-i18n="loopLead">Estudia con Pomodoro, resuelve retos, gana XP y Bytes, y usa tus recompensas para mantener a Codey sano, descansado y evolucionando.</p></div>
+      <img class="loop-art reveal reveal-delay" src="assets/readme/loop.svg" alt="Ciclo de estudiar, resolver, ganar, cuidar y desbloquear" loading="lazy">
+    </section>
+
+    <section class="section-shell" id="funciones">
+      <div class="section-heading compact reveal"><p class="eyebrow" data-i18n="featuresEyebrow">HECHO PARA SEGUIR AVANZANDO</p><h2 data-i18n="featuresTitle">Más que una app de retos.</h2></div>
+      <div class="feature-grid">
+        <img class="feature-card reveal" src="assets/readme/card-pet-care.svg" alt="Cuidado de Codey" loading="lazy">
+        <img class="feature-card reveal reveal-delay" src="assets/readme/card-learn.svg" alt="Aprende programando" loading="lazy">
+        <img class="feature-card reveal" src="assets/readme/card-focus.svg" alt="Foco y recompensas" loading="lazy">
+        <img class="feature-card reveal reveal-delay" src="assets/readme/card-android.svg" alt="Sistemas Android nativos" loading="lazy">
+      </div>
+    </section>
+
+    <section class="section-shell stats-section">
+      <div class="stats-copy reveal"><p class="eyebrow" data-i18n="statsEyebrow">TU PROGRESO, EN TUS MANOS</p><h2 data-i18n="statsTitle">Sin cuentas.<br><em>Sin servidores.</em></h2><p data-i18n="statsLead">Tus datos viven en tu dispositivo. CodePet está construida con Kotlin, Jetpack Compose, Room y DataStore para que aprender sea también sentir que el progreso es tuyo.</p></div>
+      <img class="stats-art reveal reveal-delay" src="assets/readme/stats-panel.svg" alt="Estadísticas de CodePet" loading="lazy">
+    </section>
+
+    <section class="section-shell screenshots" id="capturas">
+      <div class="section-heading compact reveal"><p class="eyebrow" data-i18n="screensEyebrow">DENTRO DE CODEPET</p><h2 data-i18n="screensTitle">Tu pequeño laboratorio<br><em>de aprendizaje.</em></h2></div>
+      <div class="screenshot-rail">
+        <figure class="shot reveal"><img src="assets/screenshots/captura_1.jpeg" alt="Inicio y cuidados de Codey" loading="lazy"><figcaption><b>01</b><span data-i18n="shot1">Inicio y cuidados</span></figcaption></figure>
+        <figure class="shot reveal reveal-delay"><img src="assets/screenshots/captura_2.jpeg" alt="Reto de programación" loading="lazy"><figcaption><b>02</b><span data-i18n="shot2">Retos de código</span></figcaption></figure>
+        <figure class="shot reveal"><img src="assets/screenshots/captura_5.jpeg" alt="Modo foco Pomodoro" loading="lazy"><figcaption><b>03</b><span data-i18n="shot3">Modo foco</span></figcaption></figure>
+        <figure class="shot reveal reveal-delay"><img src="assets/screenshots/captura_6.jpeg" alt="Tienda y vestuario" loading="lazy"><figcaption><b>04</b><span data-i18n="shot4">Tienda y vestuario</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="download-panel section-shell" id="instalar">
+      <div class="download-inner reveal"><img src="assets/codey-footer.svg" alt="Codey saludando" loading="lazy"><div><p class="eyebrow" data-i18n="downloadEyebrow">LISTO PARA EMPEZAR</p><h2 data-i18n="downloadTitle">Tu próximo commit<br>le dará de comer.</h2><p data-i18n="downloadLead">Descarga CodePet, nombra a tu Codey y convierte tus sesiones de código en una rutina que se siente viva.</p><a class="button button-primary" href="https://github.com/fguzman-stack/CodePet/releases/latest" target="_blank" rel="noreferrer"><span>↓</span> <span data-i18n="download">Descargar APK</span></a></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-brand"><img src="assets/codey-logo.svg" alt=""><strong>Code<span>Pet</span></strong><small data-i18n="footerTag">Aprende código. Cuida a Codey.</small></div><div class="footer-links"><a href="https://github.com/fguzman-stack/CodePet" target="_blank" rel="noreferrer">GitHub ↗</a><a href="privacy.html" data-i18n="privacy">Privacidad</a><a href="mailto:familiazv2016@gmail.com" data-i18n="contact">Contacto</a></div><p class="copyright">© 2026 Francisco Guzmán · CodePet</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>
